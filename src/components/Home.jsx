@@ -12,16 +12,17 @@ export default function Home({ setActiveTab }) {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      overflowX: 'hidden'
     }}>
       
-      {/* Grand Immersive Cinematic Video Banner (Height Increased to 650px) */}
+      {/* Grand Immersive Cinematic Video Banner */}
       <div style={{
         position: 'relative',
         width: '100%',
-        height: '650px',
+        height: 'clamp(500px, 75vh, 650px)',
         overflow: 'hidden',
-        boxShadow: '0 25px 50px rgba(0,0,0,0.9)',
+        // boxShadow: '0 25px 50px rgba(0,0,0,0.9)',
         borderBottom: '4px solid rgba(212, 175, 55, 0.5)'
       }}>
         
@@ -43,7 +44,6 @@ export default function Home({ setActiveTab }) {
             filter: 'brightness(0.65) contrast(1.1)'
           }}
         >
-          {/* Note: public folder ki file ko direct '/filename.mp4' likhte hain */}
           <source src="/design resturent.mp4" type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
@@ -69,64 +69,83 @@ export default function Home({ setActiveTab }) {
           zIndex: 3, 
           width: '100%', 
           maxWidth: '1000px',
-          padding: '0 20px',
+          padding: '0 16px',
           boxSizing: 'border-box'
         }}>
           <span style={{ 
             display: 'inline-block',
-            padding: '10px 26px', 
+            padding: '7px 14px', 
             borderRadius: '30px', 
             backgroundColor: 'rgba(13,148,136,0.4)', 
             color: '#14B8A6', 
-            fontSize: '13px', 
+            fontSize: 'clamp(9px, 2.2vw, 12px)', 
             border: '1px solid #0D9488',
             fontWeight: '800',
             textTransform: 'uppercase',
-            letterSpacing: '2px',
+            letterSpacing: '1px',
             boxShadow: '0 0 25px rgba(13,148,136,0.6)',
             backdropFilter: 'blur(10px)',
-            marginBottom: '15px'
+            marginBottom: '10px',
+            maxWidth: '92vw',
+            boxSizing: 'border-box'
           }}>
             ✨ Bihar's First Galaxy Starry Ceiling & Koi Pond Theme Restaurant
           </span>
 
-          <h1 style={{ 
-            fontSize: '64px', 
-            color: '#FFFFFF', 
-            margin: '10px 0 15px 0', 
-            fontWeight: '900',
-            letterSpacing: '1px',
-            textShadow: '0 5px 25px rgba(0,0,0,0.9)'
-          }}>
-            Welcome to <span style={{ color: '#D4AF37', textShadow: '0 0 30px rgba(212,175,55,0.7)' }}>Jalmandap</span>
-          </h1>
+          {/* FIX: Controlled font sizes and proper block stacking to completely stop overlapping */}
+          <div style={{ margin: '10px 0 15px 0' }}>
+            <h1 style={{ 
+              fontSize: 'clamp(28px, 6vw, 54px)', 
+              color: '#FFFFFF', 
+              margin: '0', 
+              fontWeight: '800',
+              letterSpacing: '0.5px',
+              textShadow: '0 4px 20px rgba(0,0,0,0.9)',
+              lineHeight: '1.2'
+            }}>
+              Welcome to
+            </h1>
+            <h1 style={{ 
+              fontSize: 'clamp(36px, 8vw, 68px)', 
+              color: '#D4AF37', 
+              margin: '2px 0 0 0', 
+              fontWeight: '900',
+              letterSpacing: '1px',
+              textShadow: '0 0 30px rgba(212,175,55,0.7)',
+              lineHeight: '1.1'
+            }}>
+              Jalmandap
+            </h1>
+          </div>
 
           <p style={{ 
             color: '#E5E7EB', 
-            fontSize: '18px', 
-            maxWidth: '780px', 
-            margin: '0 auto 30px auto', 
-            lineHeight: '1.7',
+            fontSize: 'clamp(12px, 2vw, 15px)', 
+            maxWidth: '750px', 
+            margin: '0 auto 20px auto', 
+            lineHeight: '1.5',
             textShadow: '0 2px 12px rgba(0,0,0,0.9)',
-            fontWeight: '500'
+            fontWeight: '500',
+            padding: '0 10px'
           }}>
             Immerse yourself in high-tech royal dining surrounded by swimming koi fish water decks, breathtaking cosmic skies, and master-crafted signature mocktails.
           </p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
             <button 
               onClick={() => setActiveTab('tableBooking')} 
               style={{ 
-                padding: '16px 30px', 
+                padding: '12px 20px', 
                 backgroundColor: '#0D9488', 
                 color: '#FFF', 
                 fontWeight: 'bold', 
-                borderRadius: '12px', 
+                borderRadius: '10px', 
                 border: 'none', 
                 cursor: 'pointer',
-                fontSize: '15px',
+                fontSize: 'clamp(12px, 1.8vw, 14px)',
                 boxShadow: '0 8px 25px rgba(13,148,136,0.6)',
-                transition: 'transform 0.2s ease'
+                width: '100%',
+                maxWidth: '240px'
               }}
             >
               🌊 Book Water Deck Table
@@ -135,16 +154,17 @@ export default function Home({ setActiveTab }) {
             <button 
               onClick={() => setActiveTab('partyBooking')} 
               style={{ 
-                padding: '16px 30px', 
+                padding: '12px 20px', 
                 backgroundColor: '#D4AF37', 
                 color: '#000', 
                 fontWeight: 'bold', 
-                borderRadius: '12px', 
+                borderRadius: '10px', 
                 border: 'none', 
                 cursor: 'pointer',
-                fontSize: '15px',
+                fontSize: 'clamp(12px, 1.8vw, 14px)',
                 boxShadow: '0 8px 25px rgba(212,175,55,0.6)',
-                transition: 'transform 0.2s ease'
+                width: '100%',
+                maxWidth: '240px'
               }}
             >
               🎂 Book Birthday / Party Area
@@ -155,38 +175,39 @@ export default function Home({ setActiveTab }) {
 
       {/* Luxury Action Cards Section */}
       <div style={{ 
-        padding: '70px 20px', 
+        padding: '40px 16px', 
         textAlign: 'center', 
         maxWidth: '1000px', 
         margin: '0 auto',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '30px',
-        width: '100%'
+        gap: '20px',
+        width: '100%',
+        boxSizing: 'border-box'
       }}>
-        <h2 style={{ color: '#F3E5AB', fontSize: '32px', fontWeight: '900', letterSpacing: '1px' }}>
+        <h2 style={{ color: '#F3E5AB', fontSize: 'clamp(22px, 4.5vw, 30px)', fontWeight: '900' }}>
           Experience Royal Hospitality
         </h2>
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px', width: '100%' }}>
           
-          <div onClick={() => setActiveTab('tableBooking')} style={{ backgroundColor: '#131C31', padding: '30px', borderRadius: '20px', border: '1px solid rgba(212,175,55,0.3)', cursor: 'pointer', boxShadow: '0 10px 30px rgba(0,0,0,0.5)', transition: 'transform 0.3s' }}>
-            <span style={{ fontSize: '40px' }}>🏛️</span>
-            <h3 style={{ color: '#FFF', fontSize: '20px', margin: '15px 0 10px 0' }}>Water Deck Seating</h3>
-            <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.5' }}>Dine right above crystal water pools with swimming koi fish and starry ceilings.</p>
+          <div onClick={() => setActiveTab('tableBooking')} style={{ backgroundColor: '#131C31', padding: '20px', borderRadius: '16px', border: '1px solid rgba(212,175,55,0.3)', cursor: 'pointer', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+            <span style={{ fontSize: '32px' }}>🏛️</span>
+            <h3 style={{ color: '#FFF', fontSize: '17px', margin: '10px 0 6px 0' }}>Water Deck Seating</h3>
+            <p style={{ color: '#9CA3AF', fontSize: '12px', lineHeight: '1.4' }}>Dine right above crystal water pools with swimming koi fish and starry ceilings.</p>
           </div>
 
-          <div onClick={() => setActiveTab('menu')} style={{ backgroundColor: '#131C31', padding: '30px', borderRadius: '20px', border: '1px solid rgba(212,175,55,0.3)', cursor: 'pointer', boxShadow: '0 10px 30px rgba(0,0,0,0.5)', transition: 'transform 0.3s' }}>
-            <span style={{ fontSize: '40px' }}>🍹</span>
-            <h3 style={{ color: '#FFF', fontSize: '20px', margin: '15px 0 10px 0' }}>Signature Mocktails</h3>
-            <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.5' }}>Try our glowing Blue Lagoon and Strawberry Sunset handcrafted drinks.</p>
+          <div onClick={() => setActiveTab('menu')} style={{ backgroundColor: '#131C31', padding: '20px', borderRadius: '16px', border: '1px solid rgba(212,175,55,0.3)', cursor: 'pointer', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+            <span style={{ fontSize: '32px' }}>🍹</span>
+            <h3 style={{ color: '#FFF', fontSize: '17px', margin: '10px 0 6px 0' }}>Signature Mocktails</h3>
+            <p style={{ color: '#9CA3AF', fontSize: '12px', lineHeight: '1.4' }}>Try our glowing Blue Lagoon and Strawberry Sunset handcrafted drinks.</p>
           </div>
 
-          <div onClick={() => setActiveTab('partyBooking')} style={{ backgroundColor: '#131C31', padding: '30px', borderRadius: '20px', border: '1px solid rgba(212,175,55,0.3)', cursor: 'pointer', boxShadow: '0 10px 30px rgba(0,0,0,0.5)', transition: 'transform 0.3s' }}>
-            <span style={{ fontSize: '40px' }}>✨</span>
-            <h3 style={{ color: '#FFF', fontSize: '20px', margin: '15px 0 10px 0' }}>Birthday Celebrations</h3>
-            <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.5' }}>Complimentary music, cake setup and special decorations for your loved ones.</p>
+          <div onClick={() => setActiveTab('partyBooking')} style={{ backgroundColor: '#131C31', padding: '20px', borderRadius: '16px', border: '1px solid rgba(212,175,55,0.3)', cursor: 'pointer', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+            <span style={{ fontSize: '32px' }}>✨</span>
+            <h3 style={{ color: '#FFF', fontSize: '17px', margin: '10px 0 6px 0' }}>Birthday Celebrations</h3>
+            <p style={{ color: '#9CA3AF', fontSize: '12px', lineHeight: '1.4' }}>Complimentary music, cake setup and special decorations for your loved ones.</p>
           </div>
 
         </div>
